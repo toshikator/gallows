@@ -1,22 +1,29 @@
 package Gallow.cycle;
 
 import java.io.*;
+import java.util.regex.Pattern;
 
 public class SymbolTaker {
 
     public static char readChar() {
 
+        String regEx = "^[а-яА-ЯёЁa-zA-Z]+$";
+        Pattern pattern = Pattern.compile(regEx);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String name;
+        String inputedChar;
         try {
-            name = reader.readLine();
+            inputedChar = reader.readLine();
+            if (!pattern.matcher(inputedChar).find()) {
+                inputedChar = "";
+                System.out.println("incorrect input, try again");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        if (name.isEmpty()) {
+        if (inputedChar.isEmpty()) {
             System.out.println("Please enter a symbol");
             return readChar();
         }
-        return name.charAt(0);
+        return inputedChar.charAt(0);
     }
 }
