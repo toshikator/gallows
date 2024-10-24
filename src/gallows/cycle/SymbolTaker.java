@@ -1,14 +1,25 @@
-package Gallow.cycle;
+package gallows.cycle;
 
 import java.io.*;
 import java.util.regex.Pattern;
 
 public class SymbolTaker {
+    private static final String regEx = "^[а-яА-ЯёЁa-zA-Z]$";
+    private static final Pattern pattern = Pattern.compile(regEx);
+    private static SymbolTaker instance;
 
-    public static char readChar() {
+    private SymbolTaker() {
+    }
 
-        String regEx = "^[а-яА-ЯёЁa-zA-Z]+$";
-        Pattern pattern = Pattern.compile(regEx);
+    public static SymbolTaker getSymbolTaker() {
+        if (instance == null) {
+            instance = new SymbolTaker();
+        }
+        return instance;
+    }
+
+    public char readChar() {
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String inputedChar;
         try {

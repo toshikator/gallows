@@ -1,27 +1,26 @@
-package Gallow.Visual;
+package gallows.visual;
 
 public class Picture {
-    private static int amountOfElements = 0;
+    private static Picture instance;
+    private int amountOfElements = 0;
 
-    public static void increaseAmountOfElements() {
-        amountOfElements++;
+    private Picture() {
     }
 
-    public static void resetAmountOfElements() {
-        amountOfElements = 0;
+    public static Picture getPicture() {
+        if (instance == null) {
+            instance = new Picture();
+        }
+        return instance;
     }
 
-//    public static void setAmountOfElements(int amountOfElements) {
-//        if (amountOfElements >= 0 && amountOfElements <= 6) {
-//            Picture.amountOfElements = amountOfElements;
-//        } else {
-//            System.out.println("there is a mistake, amount of elements must be between 0 and 6, but now is " + amountOfElements);
-//        }
-//    }
+    public void setAmountOfElements(int amount) {
+        amountOfElements = amount;
+    }
 
-    public static void showPicture() {
+    public void showPicture() {
 
-        switch (Picture.amountOfElements) {
+        switch (amountOfElements) {
             case 0:
                 System.out.println("_______________");
                 System.out.println(" |           |");
