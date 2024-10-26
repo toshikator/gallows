@@ -33,7 +33,7 @@ public class WordBookReader {
         wordsList = new ArrayList<>();
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("singular.txt");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            if (inputStream.equals(InputStream.nullInputStream())) {
+            if (inputStream == null) {
                 throw new FileNotFoundException("Resource 'singular.txt' not found in classpath");
             }
             String line;
