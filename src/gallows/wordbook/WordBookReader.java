@@ -1,8 +1,6 @@
 package gallows.wordbook;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -33,7 +31,11 @@ public class WordBookReader {
 
     public void readWordbook() {
         wordsList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("./resources/singular.txt"))) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("singular.txt");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            if (inputStream == null) {
+                throw new FileNotFoundException("Resource 'singular.txt' not found in classpath");
+            }
             String line;
             while ((line = reader.readLine()) != null) {
                 wordsList.add(line);

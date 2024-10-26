@@ -60,7 +60,7 @@ public class GameCycle {
 
     private void arrangeStats(String word, HashSet<Character> symbols) {
         AtomicInteger temp = new AtomicInteger();
-        symbols.stream().forEach(symbol -> {
+        symbols.forEach(symbol -> {
             if (!word.contains(symbol.toString())) {
                 temp.getAndIncrement();
             }

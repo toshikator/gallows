@@ -28,6 +28,6 @@ public class MainMenu {
     }
 
     private static boolean isInputCorrect(char answer) {
-        return ((answer == 'y' || answer == 'н' || answer == 'ט' || answer == 'e'));
+        return ((answer == 'y' || answer == 'н' || answer == 'e'));
     }
 }
