@@ -13,6 +13,7 @@ public class MainMenu {
         do {
             char answer;
             do {
+                System.out.println("****************************************************************************");
                 System.out.println("If you want to start a new game type 'y' ");
                 System.out.println("If you want to exit type 'e' ");
                 System.out.println("\nKeep in mind ALL the words of this game are in RUSSIAN language only");

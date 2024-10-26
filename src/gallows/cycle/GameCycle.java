@@ -36,13 +36,13 @@ public class GameCycle {
     public void runCycle() {
 
         word.setWord(wordBookReader.getRandomWord());
-
+        picture.showPicture();
         while (!isWin && !isLoose) {
-            picture.setAmountOfElements(amountOfFalseTries);
-            System.out.println("************************************************");
-            System.out.println("\n you have amount tries  = " + (6 - amountOfFalseTries));
-            picture.showPicture();
-            System.out.println(word.getMaskedWord(symbolStorage.getSymbols()));
+
+//            System.out.println("************************************************");
+//            System.out.println("\n tries amount left  = " + (6 - amountOfFalseTries));
+//            picture.showPicture();
+            System.out.println("\nCurrent word status \n" + word.getMaskedWord(symbolStorage.getSymbols()));
             System.out.println("Input one symbol on this game step");
             symbolStorage.addSymbol(symbolTaker.readChar());
             arrangeStats(word.getWord(), symbolStorage.getSymbols());
@@ -65,7 +65,15 @@ public class GameCycle {
                 temp.getAndIncrement();
             }
         });
-        amountOfFalseTries = temp.intValue();
+        if (amountOfFalseTries != temp.intValue()) {
+            System.out.println("word doesn't contain the symbol");
+            System.out.println("tries amount left  = " + (6 - temp.intValue()));
+            amountOfFalseTries = temp.intValue();
+            picture.setAmountOfElements(amountOfFalseTries);
+            picture.showPicture();
+        } else {
+            System.out.println("Correct guess, your luck");
+        }
     }
 }
 
